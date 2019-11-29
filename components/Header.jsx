@@ -4,6 +4,12 @@ import React from 'react';
 import { headerHeight } from '../common/values'
 
 const StyledHeader = styled.div`
+  position: fixed;
+  width: 100vw;
+  background: white;
+  z-index: 100;
+  top: 0;
+  left: 0;
   height: ${headerHeight};
   display: flex;
   align-items: center;

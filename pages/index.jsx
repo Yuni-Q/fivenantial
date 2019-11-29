@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { bodyHeight } from '../common/values'
+import { bodyHeight,headerHeight,footerHeight } from '../common/values'
 
 const StyledIndex = styled.div`
+  margin-top: ${headerHeight};
+  margin-bottom: ${footerHeight};
   width: 100vw;
   height: ${bodyHeight};
   display: flex;
@@ -21,7 +23,7 @@ const StyledIndex = styled.div`
     /* border-color: red green blue pink; */
     background-color:#39B4CC;
     background-image:
-        ${({a}) => a};
+        ${({ a }) => a};
     > div {
       display: flex;
       justify-content: center;
@@ -40,6 +42,7 @@ const StyledIndex = styled.div`
     font-size: 30px;
     font-weight: bold;
     color: #333333;
+    text-align: center;
   }
   h2 {
     width: 106px;
@@ -77,15 +80,17 @@ const Index = () => {
   const per = 75 * 3.6;
   let deg = 90
   let color = '#A2ECFB'
-  if (per <= 180){
+  if (per <= 180) {
     deg += per;
   } else {
     deg += per - 180;
     color = '#39B4CC'
   }
+  const user = '이윤희';
   return (
     <StyledIndex a={`linear-gradient(${deg}deg, transparent 50%, ${color} 50%),
-      linear-gradient(90deg, #A2ECFB 50%, transparent 50%);`}>
+      linear-gradient(90deg, #A2ECFB 50%, transparent 50%);`}
+    >
       <div>
         <div />
         <div>
@@ -94,12 +99,22 @@ const Index = () => {
       </div>
       <div className='circle'>
         <div>
-        <h1>
-          로그인하고 알아보기
-        </h1>
-        <h2>
-          ??% 달성
-        </h2>
+          {user
+            ? <h1>
+              3,423,469원
+          </h1>
+            : <h1>
+              <a href="">
+                로그인하고 알아보기
+            </a>
+            </h1>}
+          {user
+            ? <h2>
+              67% 달성
+      </h2>
+            : <h2>
+              ??% 달성
+        </h2>}
         </div>
       </div>
     </StyledIndex>
