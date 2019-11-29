@@ -11,6 +11,9 @@ import withReduxSaga from 'next-redux-saga';
 import reducer from '../reducers';
 import rootSaga from '../sagas';
 
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+
 class MyApp extends App {
   componentDidMount() {
     if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
@@ -50,8 +53,15 @@ class MyApp extends App {
               content: 'website',
             },
           ]}
+          link={[{
+            rel: 'shortcut icon', href: '/favicon.ico',
+          }, {
+            rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/antd/3.16.2/antd.css',
+          }]}
         />
-        <Component {...pageProps} />
+        <Header />
+          <Component {...pageProps} />
+        <Footer />
       </Provider>
     );
   }
