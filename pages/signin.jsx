@@ -1,89 +1,149 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components';
+import { setLayout } from '../actions';
+import { useDispatch } from 'react-redux'
 
 const StyledSignin = styled.div`
-  margin: 31px 15px 0;
-  pre {
-    font-family: NotoSansKR;
-    font-size: 16px;
-    font-weight: 500;
-    color: #666666;
-    margin-bottom: 58px;
+  margin: 40px 20px 60px;
+  .title {
+    font-family: AppleSDGothicNeo;
+    font-size: 22px;
+    font-weight: 300;
+    color: #555555;
+    margin-bottom: 69px;
   }
-  form {
-      & div:first-child {
-        margin-bottom: 31px;
-        display: flex;
-        justify-content: space-between;
-      }
-      input {
-        width: 100%;
-        height: 36px;
-        border-radius: 4px;
-        background-color: #d8d8d8;
-        margin-bottom: 8px;
-        font-family: NotoSansKR;
-        font-size: 14px;
-        font-weight: bold;
-        color: #777777;
-        text-indent: 15px;
-      }
-      & div:first-child input:first-child {
-        width: 254px;
-        height: 36px;
-        border-radius: 4px;
-        background-color: #d8d8d8;
-        margin-bottom: 0;
-      }
-      button:nth-child(2) {
-        width: 69px;
-        height: 36px;
-        border-radius: 4px;
-        background-color: #d8d8d8;
-        font-family: NotoSansKR;
-        font-size: 14px;
-        font-weight: bold;
-        color: #828282;
-      }
-      button:nth-child(3) {
-        z-index: 100;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100vw;
-        height: 60px;
-        background-color: #d8d8d8;
-        font-family: NotoSansKR;
-        font-size: 14px;
-        font-weight: bold;
-        color: #828282;
-        text-align: center;
-        line-height: 60px;
-      }
-    }
+  label {
+    display: block;
+    font-family: AppleSDGothicNeo;
+    font-size: 12px;
+    font-weight: 500;
+    color: #888888;
+    margin-bottom: 5px;
+  }
+  .id-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+  .id {
+    border-radius: 2px;
+    background-color: #ebedef;
+    font-family: AppleSDGothicNeo;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333333;
+    padding-left: 10px;
+    margin-right: 10px;
+  }
+  .id:focus {
+    background: #ffffff;
+  }
+  .button {
+    width: 80px;
+    height: 36px;
+    border-radius: 2px;
+    background-color: #1875ba;
+    font-family: AppleSDGothicNeo;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    color: #ffffff;
+    line-height: 36px;
+  }
+  .password-wrapper {
+    margin-bottom: 12px;
+  }
+  .password {
+    padding-left: 10px;
+    width: 100%;
+    border-radius: 2px;
+    background-color: #ebedef;
+    font-family: AppleSDGothicNeo;
+    font-size: 22px;
+    color: #333333;
+  }
+  .password:focus {
+    background: #fff;
+  }
+  .password-description {
+    font-family: AppleSDGothicNeo;
+    font-size: 11px;
+    font-weight: 500;
+    color: #ff8484;
+  }
+  .button-wrapper {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+  }
+  .back {
+    display: inline-block;
+    text-align: center;
+    width: 90px;
+    height: 60px;
+    background-color: #afb8be;
+    font-family: AppleSDGothicNeo;
+    font-size: 22px;
+    font-weight: bold;
+    color: #ffffff;
+    line-height: 60px;
+  }
+  .complete {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    line-height: 60px;
+    text-align: center;
+    width: 285px;
+    height: 60px;
+    background-color: #058ef3;
+    font-family: AppleSDGothicNeo;
+    font-size: 22px;
+    font-weight: bold;
+    color: #ffffff;
+  }
 `;
 
-const text = `
-지금 등록하시면 
-앞으로 !!한 서비스를 받아볼 수 있어요
-`
-
 const Signin = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setLayout('기본 정보 입력'))
+  }, [])
   return (
     <StyledSignin>
-      <pre>
-        {text}
-      </pre>
+      <div className='title'>
+        Wow한 연말정산<br />
+        13월의 월급과 함께하세요.
+      </div>
       <form action="">
-        <div>
-          <input type="text" placeholder='아이디' />
-          <button>중복 확인</button>
+        <label htmlFor="id">아이디</label>
+        <div className='id-wrapper'>
+          <input type="text" className='id' />
+          <div className='button'>중복확인</div>
         </div>
-        <div>
-          <input type="password" placeholder='비밀번호' />
-          <input type="password" placeholder='비밀번호 확안' />
+        <label htmlFor="password">비밀번호</label>
+        <div className='password-wrapper'> 
+          <input type="password" name="" id="" className='password' />
         </div>
-        <button>확인</button>
+        <label htmlFor="password2">비밀번호 확인</label>
+        <div className='password-wrapper'> 
+          <input type="password" name="" id="" className='password' />
+          <div className='password-description'>
+            비밀번호가 일치하지 않습니다. 확인해주세요.
+          </div>
+        </div>
+        
+        <div className='button-wrapper'>
+          <a href="" className='back'>
+            이전
+          </a>
+          <button className='complete'>
+            완료
+          </button>
+        </div>
+        
       </form>
 
     </StyledSignin>

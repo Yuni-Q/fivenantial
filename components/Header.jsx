@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import React from 'react';
+import React,{useState, useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import Link from 'next/link'
 
@@ -18,11 +18,18 @@ const StyledHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  a {
+  .plus {
     width: 32px;
     height: 32px;
     margin-right: 21px;
     background: url('/static/plus.svg') center;
+    border: none;
+  }
+  .close {
+    width: 30px;
+    height: 30px;
+    margin-right: 21px;
+    background: url('/static/close.svg') center;
     border: none;
   }
   .title {
@@ -47,9 +54,14 @@ const Header = () => {
   return (
     <StyledHeader>
       <div className='title'>{title}</div>
-      <Link href='/form'>
-        <a />
-      </Link>
+      {!(title === '기본 정보 입력')
+        ? <Link href='/form'>
+          <a className='plus' />
+        </Link>
+        : <Link href='/'>
+        <a  className='close'/>
+        </Link>
+      }
         
     </StyledHeader>
   )
