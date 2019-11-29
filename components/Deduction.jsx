@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components';
 import DeductionDetail from './DeductionDetail';
 
@@ -7,10 +7,10 @@ const StyledDeduction = styled.div`
   background-color: #ffffff;
   padding: 5px 10px;
   .title {
-    font-family: NotoSansKR;
-    font-size: 14px;
+    font-family: AppleSDGothicNeo;
+    font-size: 12px;
     font-weight: 500;
-    color: #3a3a3a;
+    color: #555555;
   }
   .value-wrapper {
     display: flex;
@@ -18,53 +18,87 @@ const StyledDeduction = styled.div`
     align-items: center;
   }
   .per {
-    height: 43px;
-    opacity: 0.32;
-    font-family: NotoSansKR;
-    font-size: 29px;
-    font-weight: bold;
+    font-family: AppleSDGothicNeo;
+    font-size: 26px;
+    font-weight: 800;
+    color: #d6dbde;
+    margin: 0 !important;
+  }
+  .button-wrapper {
+    display: flex;
+    text-align: center;
+    button {
+    width: 20px;
+    height: 6px;
+    border: solid 3px #888888;
+    }
+  }
+  .deduction-detail {
+    padding: 20px 10px;
+  }
+  .won-wrapper {
+    display: flex;
+  }
+  .won {
+    font-family: AppleSDGothicNeo;
+    font-size: 14px;
+    font-weight: 800;
+    text-align: right;
     color: #333333;
-    }
-    .button-wrapper {
-      text-align: center;
-      button {
-      width: 20px;
-      height: 6px;
-      border: solid 3px #888888;
-      }
-    }
-    .deduction-detail {
-      padding: 20px 10px;
-    }
+    margin-right: 6px;
+  }
     
 `;
 
 
-const Deduction = () => {
+const Deduction = ({ item }) => {
+  const { title, per, money } = item;
   const [toggle, setToggle] = useState(false);
-  return (
-    <StyledDeduction>
-      <div className='title'>
-        인적공제
-      </div>
-      <div className='value-wrapper'>
-        <div className='per'>
-          45%
+  if (toggle === false)
+    return (
+      <StyledDeduction>
+        <div className='title'>
+          {title}
         </div>
-        <div>
-          1,244,555원
+        <div className='value-wrapper'>
+          <div className='per'>
+            {per}
+          </div>
+          <div className='won-wrapper'>
+            <div className='won'>
+              {money}
+            </div>
+            <div className='button-wrapper'>
+              <img src='/static/drowdown.svg' onClick={() => setToggle(true)} />
+
+          </div>
+          </div>
         </div>
-      </div>
-      <div className='button-wrapper'>
-        <button onClick={() => setToggle((toggle) => !toggle)} />
-      </div>
-      {!!toggle && <div className='deduction-detail'>
-        <DeductionDetail />
-        <DeductionDetail />
-        <DeductionDetail />
-      </div>}
-    </StyledDeduction>
-  )
+      </StyledDeduction>
+    )
+  if (toggle === true)
+    return (
+      <StyledDeduction>
+        
+        <div className='value-wrapper'>
+          <div className='title'>
+          {title}
+        </div>
+          <div className='won-wrapper'>
+            <div className='won'>
+              {money}
+            </div>
+            <div className='button-wrapper'>
+              <img src='/static/dropup.svg' onClick={() => setToggle(false)} />
+          </div>
+          </div>
+        </div>
+        {!!item.content && item.content.map((i, index) => {
+          return <DeductionDetail item={i} key={index} />
+        })}
+      </StyledDeduction>
+    )
+    return <div></div>;
 }
 
 

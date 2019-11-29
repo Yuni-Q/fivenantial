@@ -70,10 +70,10 @@ const Footer = () => {
       </div>
       <div onClick={() => {
         setCategory('tip')
-        Router.push('/info')
+        Router.push('/noti')
       }}>
-        {catogory === 'analyze'
-              ? <img src="/static/tip-inactive.svg" alt="" />
+        {catogory === 'tip'
+              ? <img src="/static/tip-active.svg" alt="" />
               : <img src="/static/tip-inactive.svg" alt="" />
         }
         

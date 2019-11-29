@@ -5,29 +5,32 @@ const StyledDeductionDetail = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 10px 20px;
   .title {
-    font-family: NotoSansKR;
-    font-size: 14px;
+    font-family: AppleSDGothicNeo;
+    font-size: 12px;
     font-weight: 500;
-    color: #3a3a3a;
+    color: #555555;
   }
   .content {
-    font-family: NotoSansKR;
-    font-size: 15px;
-    font-weight: bold;
-    color: #333333;
+    font-family: AppleSDGothicNeo;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: right;
+    color: #555555;
   }
 `;
 
 
-const DeductionDetail = () => {
+const DeductionDetail = ({item}) => {
+  const {title, content} = item;
   return (
     <StyledDeductionDetail>
       <div className='title'>
-        인적공제
+        {title}
       </div>
       <div className='content'>
-        1,244,555원
+        {content}
       </div>
     </StyledDeductionDetail>
   )
