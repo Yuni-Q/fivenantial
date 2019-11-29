@@ -14,6 +14,8 @@ import rootSaga from '../sagas';
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 
+import { headerHeight, footerHeight, bodyHeight } from '../common/values'
+
 class MyApp extends App {
   componentDidMount() {
     if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
@@ -60,7 +62,14 @@ class MyApp extends App {
           }]}
         />
         <Header />
+        <div style={{
+          height: bodyHeight,
+          marginTop: headerHeight,
+          marginBottom: footerHeight,
+          overflow: 'scroll'
+        }}>
           <Component {...pageProps} />
+        </div>
         <Footer />
       </Provider>
     );
@@ -81,12 +90,12 @@ const configureStore = (initialState, options) => {
   const enhancer =
     process.env.NODE_ENV === 'development'
       ? compose(
-          applyMiddleware(...middlewares),
-          !options.isServer &&
-            typeof window.__REDUX_DEVTOOLS_EXTENSION__ !== 'undefined'
-            ? window.__REDUX_DEVTOOLS_EXTENSION__()
-            : f => f,
-        )
+        applyMiddleware(...middlewares),
+        !options.isServer &&
+          typeof window.__REDUX_DEVTOOLS_EXTENSION__ !== 'undefined'
+          ? window.__REDUX_DEVTOOLS_EXTENSION__()
+          : f => f,
+      )
       : compose(applyMiddleware(...middlewares));
   const store = createStore(reducer, initialState, enhancer);
   store.sagaTask = sagaMiddleware.run(rootSaga);

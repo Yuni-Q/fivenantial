@@ -1,13 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { bodyHeight,headerHeight,footerHeight } from '../common/values'
 
 const StyledIndex = styled.div`
-  margin-top: ${headerHeight};
-  margin-bottom: ${footerHeight};
   width: 100vw;
-  height: ${bodyHeight};
   display: flex;
   justify-content: center;
   align-items: center;

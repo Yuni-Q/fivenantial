@@ -1,12 +1,9 @@
 import React from 'react'
 import styled from 'styled-components';
 
-import { bodyHeight,headerHeight,footerHeight } from '../common/values'
 import Deduction from '../components/Deduction';
 
 const StyledDetail = styled.div`
-  margin-top: ${headerHeight};
-  margin-bottom: ${footerHeight};
   width: 100vw;
   & > div:first-child {
     display: flex;

@@ -142,3 +142,7 @@ input,
 textarea {
   -webkit-appearance: none;
 }
+
+#__next {
+  overflow: hidden;
+}

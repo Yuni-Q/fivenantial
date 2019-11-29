@@ -2,8 +2,6 @@ import React from 'react'
 import styled from 'styled-components';
 
 const StyledSignin = styled.div`
-  margin-top: ${headerHeight};
-  margin-bottom: ${footerHeight};
   margin: 31px 15px 0;
   pre {
     font-family: NotoSansKR;
