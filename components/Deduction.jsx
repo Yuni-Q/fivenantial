@@ -56,7 +56,7 @@ const Deduction = ({ item }) => {
   const [toggle, setToggle] = useState(false);
   if (toggle === false)
     return (
-      <StyledDeduction>
+      <StyledDeduction onClick={() => setToggle(true)} >
         <div className='title'>
           {title}
         </div>
@@ -69,7 +69,7 @@ const Deduction = ({ item }) => {
               {money}
             </div>
             <div className='button-wrapper'>
-              <img src='/static/drowdown.svg' onClick={() => setToggle(true)} />
+              <img src='/static/drowdown.svg' />
 
           </div>
           </div>
