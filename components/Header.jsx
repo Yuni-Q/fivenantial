@@ -47,14 +47,10 @@ const StyledHeader = styled.div`
 
 const Header = () => {
   const { title } = useSelector(state => state.layout)
-  // const dispatch = useDispatch();
-  // const onClick = () => {
-  //   dispatch(signin('Yuni-Q'))
-  // }
   return (
     <StyledHeader>
       <div className='title'>{title}</div>
-      {!(title === '기본 정보 입력')
+      {(title === '13월의 월급')
         ? <Link href='/form'>
           <a className='plus' />
         </Link>

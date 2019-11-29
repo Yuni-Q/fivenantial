@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux'
+
 import { setLayout } from '../actions';
+import Signin from '../components/Signin'
 
 const StyledForm = styled.form`
   margin: 0 20px;
@@ -176,92 +178,98 @@ const Form = () => {
   const [monthly, setMonthly] = useState(false);
   const [charter, setCharter] = useState(false);
   const [self, setSelf] = useState(false);
+
+  const [page, setPage] = useState(1);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setLayout('기본 정보 입력'))
   }, [])
-  return (
-    <StyledForm>
-      <div className='page-info-wrapper'>
-        <div className='page-info-active' />
-        <div className='page-info-inactive' />
-      </div>
-      <form action="">
-        <label htmlFor="salary">연 소득</label>
-        <div className='salary-wrapper'>
-          <input type="text" id='salary' name='salary' />
-          <div className='won'>만원</div>
+  if (page === 1)
+    return (
+      <StyledForm>
+        <div className='page-info-wrapper'>
+          <div className='page-info-active' />
+          <div className='page-info-inactive' />
         </div>
-
-        <label>재직 기업 규모</label>
-        <span className={enterprise ? 'button-active' : 'button-inactive'} onClick={() => setEnterprise(true)}>대기업</span>
-        <span className={enterprise ? 'button-inactive' : 'button-active'} onClick={() => setEnterprise(false)}>중소기업</span>
-
-        <label>주 금융 지불 방식</label>
-        <span className={checkCard ? 'button-active' : 'button-inactive'} onClick={() => setCheckCard(!checkCard)} >체크카드</span>
-        <span className={creditCard ? 'button-active' : 'button-inactive'} onClick={() => setCreditCard(!creditCard)}>신용카드</span>
-        <span className={cash ? 'button-active' : 'button-inactive'} onClick={() => setCash(!cash)}>현금</span>
-        <div>
-          <div className='radio-box'>
-            <label>
-              주택 청약 저축 여부
-          </label>
-            <div className='radio-wrapper'>
-              <span className={offer ? 'radio-active' : 'radio-inactive'} onClick={() => setOffer(true)}>청약중</span>
-              <span className={offer ? 'radio-inactive' : 'radio-active'} onClick={() => setOffer(false)}>청약없음</span>
-            </div>
+        <form action="">
+          <label htmlFor="salary">연 소득</label>
+          <div className='salary-wrapper'>
+            <input type="text" id='salary' name='salary' />
+            <div className='won'>만원</div>
           </div>
 
-          <div className='radio-box'>
-            <label>
-              퇴직 연금 가입 여부
+          <label>재직 기업 규모</label>
+          <span className={enterprise ? 'button-active' : 'button-inactive'} onClick={() => setEnterprise(true)}>대기업</span>
+          <span className={enterprise ? 'button-inactive' : 'button-active'} onClick={() => setEnterprise(false)}>중소기업</span>
+
+          <label>주 금융 지불 방식</label>
+          <span className={checkCard ? 'button-active' : 'button-inactive'} onClick={() => setCheckCard(!checkCard)} >체크카드</span>
+          <span className={creditCard ? 'button-active' : 'button-inactive'} onClick={() => setCreditCard(!creditCard)}>신용카드</span>
+          <span className={cash ? 'button-active' : 'button-inactive'} onClick={() => setCash(!cash)}>현금</span>
+          <div>
+            <div className='radio-box'>
+              <label>
+                주택 청약 저축 여부
           </label>
-            <div className='radio-wrapper'>
-              <span className={pension ? 'radio-active' : 'radio-inactive'} onClick={() => setPension(true)}>가입됨</span>
-              <span className={pension ? 'radio-inactive' : 'radio-active'} onClick={() => setPension(false)}>가입안함</span>
+              <div className='radio-wrapper'>
+                <span className={offer ? 'radio-active' : 'radio-inactive'} onClick={() => setOffer(true)}>청약중</span>
+                <span className={offer ? 'radio-inactive' : 'radio-active'} onClick={() => setOffer(false)}>청약없음</span>
+              </div>
             </div>
-          </div>
 
-          <div className='radio-box'>
-            <label>
-              결혼여부
+            <div className='radio-box'>
+              <label>
+                퇴직 연금 가입 여부
           </label>
-            <div className='radio-wrapper'>
-              <span className={marriage ? 'radio-active' : 'radio-inactive'} onClick={() => setMarriage(true)}>결혼</span>
-              <span className={marriage ? 'radio-inactive' : 'radio-active'} onClick={() => setMarriage(false)}>미혼</span>
+              <div className='radio-wrapper'>
+                <span className={pension ? 'radio-active' : 'radio-inactive'} onClick={() => setPension(true)}>가입됨</span>
+                <span className={pension ? 'radio-inactive' : 'radio-active'} onClick={() => setPension(false)}>가입안함</span>
+              </div>
             </div>
-          </div>
 
-
-          <div className='radio-box'>
-            <label>
-              1인 가구
+            <div className='radio-box'>
+              <label>
+                결혼여부
           </label>
-            <div className='radio-wrapper'>
-              <span className={solo ? 'radio-active' : 'radio-inactive'} onClick={() => { setSolo(true) }}>해당</span>
-              <span className={solo ? 'radio-inactive' : 'radio-active'} onClick={() => { setSolo(false) }}>미해당</span>
+              <div className='radio-wrapper'>
+                <span className={marriage ? 'radio-active' : 'radio-inactive'} onClick={() => setMarriage(true)}>결혼</span>
+                <span className={marriage ? 'radio-inactive' : 'radio-active'} onClick={() => setMarriage(false)}>미혼</span>
+              </div>
             </div>
+
+            <div className='radio-box'>
+              <label>
+                1인 가구
+          </label>
+              <div className='radio-wrapper'>
+                <span className={solo ? 'radio-active' : 'radio-inactive'} onClick={() => { setSolo(true) }}>해당</span>
+                <span className={solo ? 'radio-inactive' : 'radio-active'} onClick={() => { setSolo(false) }}>미해당</span>
+              </div>
+            </div>
+
+            <label>거주 형태</label>
+            <span className={monthly ? 'button-active' : 'button-inactive'} onClick={() => setMonthly(!monthly)}>월세</span>
+            <span className={charter ? 'button-active' : 'button-inactive'} onClick={() => setCharter(!charter)}>전세</span>
+            <span className={self ? 'button-active' : 'button-inactive'} onClick={() => setSelf(!self)}>자가</span>
           </div>
-
-
-          <label>거주 형태</label>
-          <span className={monthly ? 'button-active' : 'button-inactive'} onClick={() => setMonthly(!monthly)}>월세</span>
-          <span className={charter ? 'button-active' : 'button-inactive'} onClick={() => setCharter(!charter)}>전세</span>
-          <span className={self ? 'button-active' : 'button-inactive'} onClick={() => setSelf(!self)}>자가</span>
+          <button className='button' onClick={() => setPage(2)}>다음</button>
+        </form>
+        <div className='description-box'>
+          <div className='description-wrapper'>
+            <div className='description-text'>
+              추가 정보를 입력하고<br />
+              정확한 계산을 받아보세요
+          </div>
+            <img className='next' src="/static/next.svg" alt="" width='24px' height='24px' />
+          </div>
         </div>
-        <button className='button'>다음</button>
-      </form>
-      <div className='description-box'>
-        <div className='description-wrapper'>
-          <div className='description-text'>
-            추가 정보를 입력하고<br />
-            정확한 계산을 받아보세요
-          </div>
-          <img className='next' src="/static/next.svg" alt="" width='24px' height='24px' />
-        </div>
-      </div>
-    </StyledForm>
-  )
+      </StyledForm>
+    )
+    if(page === 2)
+    return (
+      <Signin setPage={setPage} />
+    )
 }
 
 export default Form;

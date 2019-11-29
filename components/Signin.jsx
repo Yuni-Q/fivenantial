@@ -1,10 +1,29 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
-import { setLayout } from '../actions';
+import { setLayout, signin } from '../actions';
 import { useDispatch } from 'react-redux'
+import Router from 'next/router';
 
 const StyledSignin = styled.div`
-  margin: 40px 20px 60px;
+  margin: 0 20px 60px;
+  .page-info-wrapper {
+    display: flex;
+    margin: 5px 0;
+    justify-content: flex-end;
+  }
+  .page-info-active {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #058ef3;
+  }
+  .page-info-inactive {
+    margin-right: 10px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #afb8be;
+  }
   .title {
     font-family: AppleSDGothicNeo;
     font-size: 22px;
@@ -103,45 +122,60 @@ const StyledSignin = styled.div`
     font-size: 22px;
     font-weight: bold;
     color: #ffffff;
+    display: inline-block;
   }
 `;
 
-const Signin = () => {
+const Signin = ({setPage}) => {
+  const [password, setPassword ] = useState('');
+  const [password2, setPassword2 ] = useState('');
+  const [error, setError ] = useState(false);
   const dispatch = useDispatch();
+  const onClick = () => {
+    dispatch(signin('Yuni-Q'))
+    Router.push('/')
+  }
   useEffect(() => {
     dispatch(setLayout('기본 정보 입력'))
   }, [])
+  useEffect(() => {
+    setError(password !== password2)
+  }, [password2])
   return (
     <StyledSignin>
+      <div className='page-info-wrapper'>
+          <div className='page-info-inactive' />
+          <div className='page-info-active' />
+        </div>
       <div className='title'>
         Wow한 연말정산<br />
-        13월의 월급과 함께하세요.
+        13월의 월급과 함께하세요.2
       </div>
       <form action="">
         <label htmlFor="id">아이디</label>
         <div className='id-wrapper'>
           <input type="text" className='id' />
-          <div className='button'>중복확인</div>
+          <div className='button' onClick={() => window.alert(['종복 된 아이디 입니다.'])}>중복확인</div>
         </div>
         <label htmlFor="password">비밀번호</label>
         <div className='password-wrapper'> 
-          <input type="password" name="" id="" className='password' />
+          <input type="password" name="" id="" className='password' value={password} onChange={(e) => setPassword(e.target.value)} />
         </div>
         <label htmlFor="password2">비밀번호 확인</label>
         <div className='password-wrapper'> 
-          <input type="password" name="" id="" className='password' />
-          <div className='password-description'>
+          <input type="password" name="" id="" className='password' value={password2} onChange={e=> setPassword2(e.target.value)} />
+          {!!error && <div className='password-description'>
             비밀번호가 일치하지 않습니다. 확인해주세요.
-          </div>
+          </div>}
         </div>
         
         <div className='button-wrapper'>
-          <a href="" className='back'>
+          <div className='back' onClick={() => setPage(1)}>
             이전
-          </a>
-          <button className='complete'>
-            완료
-          </button>
+          </div>
+              <div className='complete' onClick={onClick}>
+                완료
+              </div>
         </div>
         
       </form>

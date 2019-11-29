@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components';
+import Router from 'next/router';
 
 import { footerHeight } from '../common/values'
 
@@ -40,22 +41,43 @@ const StyledFooter = styled.div`
 `;
 
 const Footer = () => {
+  const [catogory, setCategory] = useState('home');
   return (
     <StyledFooter>
-      <div>
-        <img src="/static/home-active.svg" alt="" />
-        <div className='active-text'>
-          전체현황
+      <div onClick={() => {
+        setCategory('home')
+        Router.push('/')
+      }}>
+            {catogory === 'home'
+              ? <img src="/static/home-active.svg" alt="" />
+              : <img src="/static/home-inactive.svg" alt="" />
+            }
+            <div className={catogory === 'home' ? 'active-text' : 'inactive-text'}>
+              전체현황
+            </div>
+      </div>
+      <div onClick={() => {
+        setCategory('analyze')
+        Router.push('/detail')
+      }}>
+        {catogory === 'analyze'
+              ? <img src="/static/analyze-active.svg" alt="" />
+              : <img src="/static/analyze-inactive.svg" alt="" />
+        }
+            <div className={catogory === 'analyze' ? 'active-text' : 'inactive-text'}>
+              세부분석
         </div>
       </div>
-      <div>
-        <img src="/static/analyze-inactive.svg" alt="" />
-        <div className='inactive-text'>
-          세부분석
-        </div>
-      </div>
-      <div><img src="/static/tip-inactive.svg" alt="" />
-        <div className='inactive-text'>
+      <div onClick={() => {
+        setCategory('tip')
+        Router.push('/info')
+      }}>
+        {catogory === 'analyze'
+              ? <img src="/static/tip-inactive.svg" alt="" />
+              : <img src="/static/tip-inactive.svg" alt="" />
+        }
+        
+        <div className={catogory === 'tip' ? 'active-text' : 'inactive-text'}>
           공제조언
         </div>
       </div>

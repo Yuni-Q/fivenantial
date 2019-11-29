@@ -1,7 +1,9 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import styled from 'styled-components';
+import {useDispatch} from 'react-redux';
 
 import Deduction from '../components/Deduction';
+import { setLayout } from '../actions';
 
 const StyledDetail = styled.div`
   width: 100vw;
@@ -57,6 +59,10 @@ const StyledDetail = styled.div`
 `;
 
 const Detail = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setLayout('세부 공제 분석'))
+  }, [])
   return (
     <StyledDetail>
       <div>
