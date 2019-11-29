@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux'
+import Link from 'next/link'
+
 
 import { headerHeight } from '../common/values'
+import { signin } from '../actions';
 
 const StyledHeader = styled.div`
   position: fixed;
@@ -13,53 +17,40 @@ const StyledHeader = styled.div`
   height: ${headerHeight};
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  > img {
-    margin: 0 15px;
-  }
-  > div {
-    display: flex;
-    align-items: center;
-  }
-  button {
+  justify-content: flex-end;
+  a {
     width: 32px;
     height: 32px;
-    background-color: #888888;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 15px 0 10px;
+    margin-right: 21px;
+    background: url('/static/plus.svg') center;
+    border: none;
   }
-  a {
-    width: 64px;
-    height: 32px;
-    border-radius: 16px;
-    background-color: #d8d8d8;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .title {
+    font-family: AppleSDGothicNeo;
+    font-size: 16px;
+    font-weight: 800;
+    color: #888888;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
   }
 `
 
 
 const Header = () => {
+  const { title } = useSelector(state => state.layout)
+  // const dispatch = useDispatch();
+  // const onClick = () => {
+  //   dispatch(signin('Yuni-Q'))
+  // }
   return (
     <StyledHeader>
-      <img
-        src='http://masmuz1.cafe24.com/wp-content/uploads/2019/05/%EC%8B%9C%EC%A0%80%EC%BF%A0%EC%85%98_%EC%95%9E-600.jpg'
-        alt=''
-        width='28px'
-        height='28px'
-      />
-      <div>
-      <a href="">로그인</a>
-      <button>
-        <img
-          src="/static/plus.svg"
-          alt=""
-        />
-      </button>
-      </div>
+      <div className='title'>{title}</div>
+      <Link href='/form'>
+        <a />
+      </Link>
+        
     </StyledHeader>
   )
 }
