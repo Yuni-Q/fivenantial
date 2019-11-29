@@ -2,12 +2,12 @@ import React from 'react'
 import styled from 'styled-components'
 
 const StyledDate = styled.div`
+  background-color: #ebedef;
   padding: 1px 15px;
-  background-color: #d8d8d8;
-  font-family: NotoSansKR;
-  font-size: 11px;
+  font-family: AppleSDGothicNeo;
+  font-size: 14px;
   font-weight: 500;
-  color: #9d9d9d;
+  color: #555555;
 `;
 
 const Date = () => {
