@@ -279,8 +279,7 @@ const Form = () => {
             <span className={self ? 'button-active' : 'button-inactive'} onClick={() => setSelf(!self)}>자가</span>
           </div>
           <button className='button' onClick={() => setPage(2)}>다음</button>
-        </form>
-        <div className='description-box'>
+          <div className='description-box'>
           <div className='description-wrapper'>
             <div className='description-text'>
               추가 정보를 입력하고<br />
@@ -289,6 +288,8 @@ const Form = () => {
             <img className='next' src="/static/next.svg" alt="" width='24px' height='24px' />
           </div>
         </div>
+        </form>
+        
       </StyledForm>
     )
   if (page === 2)
