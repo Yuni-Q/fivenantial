@@ -5,6 +5,9 @@ import { setLayout } from '../actions';
 import { useDispatch,useSelector } from 'react-redux';
 
 const StyledNoti = styled.div`
+  img {
+    flex-shrink: 0;
+  }
   .noti-wrapper {
     margin: 9px 15px;
     display: flex;
@@ -22,6 +25,7 @@ const StyledNoti = styled.div`
     font-size: 14px;
     font-weight: 500;
     color: #666666;
+    margin-right: 5px;
   }
   .noti-img-wrapper {
     display: flex;
