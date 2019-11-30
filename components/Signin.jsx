@@ -91,7 +91,8 @@ const StyledSignin = styled.div`
     font-weight: 500;
     color: #ff8484;
   }
-  .button-wrapper {
+  .button-wrapper-complete {
+    display: flex;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -110,6 +111,7 @@ const StyledSignin = styled.div`
     line-height: 60px;
   }
   .complete {
+    display: flex;
     border: 0;
     margin: 0;
     padding: 0;
@@ -149,7 +151,7 @@ const Signin = ({setPage}) => {
         </div>
       <div className='title'>
         Wow한 연말정산<br />
-        13월의 월급과 함께하세요.2
+        13월의 월급과 함께하세요.
       </div>
       <form action="">
         <label htmlFor="id">아이디</label>
@@ -169,7 +171,7 @@ const Signin = ({setPage}) => {
           </div>}
         </div>
         
-        <div className='button-wrapper'>
+        <div className='button-wrapper-complete'>
           <div className='back' onClick={() => setPage(1)}>
             이전
           </div>

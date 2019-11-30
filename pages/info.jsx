@@ -261,7 +261,7 @@ const Info = () => {
             onClick={() => setTab('소기업…공제부금')}
           >
             소기업…공제부금
-            <div className='bar' />
+            <div className='bar' style={{height: '106px'}}/>
           </li>
           <li
             className={tab === '주택마련저축' ? 'active-tap' : 'inactive-tap'}
@@ -369,29 +369,29 @@ const Chart = () => {
       <div className='month-wrapper'>
         <div className='month'>
           1월
-      <div className='bar' />
+      <div className='bar' style={{height: '96px'}}/>
         </div>
-        <div className='month'>2월<div className='bar' />
+        <div className='month'>2월<div className='bar' style={{height: '87px'}}/>
         </div>
-        <div className='month'>3월<div className='bar' />
+        <div className='month'>3월<div className='bar' style={{height: '79px'}}/>
         </div>
-        <div className='month'>4월<div className='bar' />
+        <div className='month'>4월<div className='bar' style={{height: '92px'}}/>
         </div>
-        <div className='month'>5월<div className='bar' />
+        <div className='month'>5월<div className='bar' style={{height: '106px'}}/>
         </div>
-        <div className='month'>6월<div className='bar' />
+        <div className='month'>6월<div className='bar' style={{height: '81px'}}/>
         </div>
-        <div className='month'>7월<div className='bar' />
+        <div className='month'>7월<div className='bar' style={{height: '80px'}}/>
         </div>
-        <div className='month'>8월<div className='bar' />
+        <div className='month'>8월<div className='bar' style={{height: '106px'}}/>
         </div>
-        <div className='month'>9월<div className='bar' />
+        <div className='month'>9월<div className='bar' style={{height: '89px'}}/>
         </div>
-        <div className='month'>10월<div className='bar' />
+        <div className='month'>10월<div className='bar' style={{height: '99px'}}/>
         </div>
-        <div className='month'>11월<div className='bar' />
+        <div className='month'>11월<div className='bar' style={{height: '50px'}}/>
         </div>
-        <div className='month'>12월<div className='bar' />
+        <div className='month'>12월<div className='bar' style={{height: '0px'}}/>
         </div>
       </div>
     </StyledChart>
