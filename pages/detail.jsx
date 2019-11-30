@@ -82,46 +82,46 @@ const Detail = () => {
   }, [])
   const list = [
     {
-      title: '기타 소득 공제',
+      title: '특별세액공제',
       per: '64%',
       money: '1,500,000원',
       content: [
         {
-          title: '개인연금저축',
-          content: '829,298원',
+          title: '보장성 보험료',
+          content: '158,020원',
         },
         {
-          title: '개인연금저축',
-          content: '829,298원',
+          title: '의료비',
+          content: '75,000원',
         },
         {
-          title: '개인연금저축',
-          content: '829,298원',
+          title: '교육비',
+          content: '46,290원',
         },
         {
-          title: '개인연금저축',
-          content: '829,298원',
+          title: '기부금',
+          content: '1,090,298원',
         },
       ],
     },
     {
-      title: '기타 소득 공제',
-      per: '64%',
+      title: '자녀세액공제',
+      per: '30%',
       money: '1,500,000원',
     },
     {
-      title: '기타 소득 공제',
-      per: '64%',
+      title: '연금계좌 세액공제',
+      per: '24%',
       money: '1,500,000원',
     },
     {
-      title: '기타 소득 공제',
-      per: '64%',
+      title: '표준세액공제',
+      per: '71%',
       money: '1,500,000원',
     },
     {
-      title: '기타 소득 공제',
-      per: '64%',
+      title: '자녀세액공제',
+      per: '40%',
       money: '1,500,000원',
     },
   ]
