@@ -5,7 +5,8 @@ import Link from 'next/link'
 
 
 import { headerHeight } from '../common/values'
-import { signin } from '../actions';
+import { signin, fetch } from '../actions';
+import Axios from 'axios';
 
 const StyledHeader = styled.div`
   position: fixed;
@@ -78,6 +79,14 @@ const StyledHeader = styled.div`
   }
 `
 
+const fetchData  = async(dispatch) => {
+  const result = await Axios.get('https://55af66b1.ngrok.io/calculate/1')
+  dispatch(fetch(result))
+  console.log(result)
+  
+  return result
+}
+
 const Header = () => {
   const { title } = useSelector(state => state.layout)
   const dispatch = useDispatch();
@@ -111,7 +120,8 @@ const Header = () => {
           <div 
             className='back-text-wrapper'
             onClick={() => {
-              dispatch(signin('Yuni-Q'))
+              dispatch(signin('Yuni-Q'));
+              fetchData(dispatch);
             }}
           >
             추가 개인정보 입력하기

@@ -9,3 +9,7 @@ export const signin = createAction(
   types.SIGN_IN,
   (name) => name,
 );
+export const fetch = createAction(
+  types.FETCH_DATA,
+  (data) => data,
+);
