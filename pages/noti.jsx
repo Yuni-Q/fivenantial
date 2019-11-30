@@ -17,6 +17,7 @@ const StyledNoti = styled.div`
     margin-right: 13px;
   }
   .noti-content {
+    word-break: keep-all;
     font-family: NotoSansKR;
     font-size: 14px;
     font-weight: 500;
