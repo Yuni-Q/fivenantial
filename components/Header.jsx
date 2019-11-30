@@ -80,6 +80,7 @@ const StyledHeader = styled.div`
 
 const Header = () => {
   const { title } = useSelector(state => state.layout)
+  const dispatch = useDispatch();
   const [popup, setPopup] = useState(false)
   const onClick = () => {
     let url = 'https://testapi.openbanking.or.kr/oauth/2.0/authorize?'
@@ -109,6 +110,9 @@ const Header = () => {
         <div className='back' onClick={() => setPopup(false)}>
           <div 
             className='back-text-wrapper'
+            onClick={() => {
+              dispatch(signin('Yuni-Q'))
+            }}
           >
             추가 개인정보 입력하기
           </div>
