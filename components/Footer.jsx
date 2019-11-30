@@ -46,7 +46,7 @@ const Footer = () => {
     <StyledFooter>
       <div onClick={() => {
         setCategory('home')
-        Router.push('/')
+        Router.push('/main')
       }}>
             {catogory === 'home'
               ? <img src="/static/home-active.svg" alt="" />

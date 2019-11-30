@@ -133,7 +133,7 @@ const Signin = ({setPage}) => {
   const dispatch = useDispatch();
   const onClick = () => {
     dispatch(signin('Yuni-Q'))
-    Router.push('/')
+    Router.push('/main')
   }
   useEffect(() => {
     dispatch(setLayout('기본 정보 입력'))

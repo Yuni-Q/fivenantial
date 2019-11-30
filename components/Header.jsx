@@ -42,22 +42,82 @@ const StyledHeader = styled.div`
     left: 50%;
     transform: translate(-50%, -50%)
   }
+  .back {
+    position: fixed;
+    width: 100vw;
+    height: 200vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+  }
+  .back-text-wrapper {
+    width: 375px;
+    height: 60px;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    font-family: NotoSansKR;
+    font-size: 16px;
+    font-weight: bold;
+    color: #666666;
+  }
+  .back-text-wrapper2 {
+    width: 375px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0d97fc;
+    font-family: NotoSansKR;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+  }
 `
-
 
 const Header = () => {
   const { title } = useSelector(state => state.layout)
+  const [popup, setPopup] = useState(false)
+  const onClick = () => {
+    let url = 'https://testapi.openbanking.or.kr/oauth/2.0/authorize?'
+    let response_type = 'code'
+    let client_id = 'qtHjKYjja5RRbfIML02krrWOCd3tSGOOvoSyYoj3'
+    let scope = 'login%20inquiry%20transfer'
+    let state = '12345678901234567890123456789012'
+    let auth_type = '0'
+    let redirect_uri = 'http://127.0.0.1:5000/test'
+    url += `response_type=${response_type}&client_id=${client_id}&scope=${scope}&`
+    url += `state=${state}&auth_type=${auth_type}&redirect_uri=${redirect_uri}`
+    window.location.href = url;   
+}
   return (
     <StyledHeader>
       <div className='title'>{title}</div>
       {(title === '13월의 월급')
-        ? <Link href='/form'>
-          <a className='plus' />
-        </Link>
-        : <Link href='/'>
-        <a  className='close'/>
+        ? 
+        // <Link href='/'>
+          <div className='plus' onClick={() => setPopup(true)}/>
+        // </Link>
+        : <Link href='/main'>
+        <a className='close'/>
         </Link>
       }
+      {!!popup && 
+        <div className='back' onClick={() => setPopup(false)}>
+          <div 
+            className='back-text-wrapper'
+          >
+            추가 개인정보 입력하기
+          </div>
+          <div className='back-text-wrapper2'
+            onClick={onClick}
+          >금융정보 연동하기</div>
+          <div>b</div>
+        </div>
+      } 
         
     </StyledHeader>
   )
