@@ -80,7 +80,7 @@ const StyledHeader = styled.div`
 `
 
 export const fetchData  = async(dispatch) => {
-  const result = await Axios.get('https://55af66b1.ngrok.io/calculate/1')
+  const result = await Axios.get('https://e3371785.ngrok.io/calculate/1')
   dispatch(fetch(result))
   console.log(result)
   
