@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components';
 import Date from '../components/Date';
 import { setLayout } from '../actions';
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 
 const StyledNoti = styled.div`
   .noti-wrapper {
@@ -17,7 +17,6 @@ const StyledNoti = styled.div`
     margin-right: 13px;
   }
   .noti-content {
-    height: 20px;
     font-family: NotoSansKR;
     font-size: 14px;
     font-weight: 500;
@@ -33,47 +32,13 @@ const Noti = () => {
   useEffect(() => {
     dispatch(setLayout('연말정산 공제 조언'))
   }, [])
+  const {tip_list: tipList} = useSelector(state => state.data)
   const list = [
     {
       date: '11월 8일',
-      content: [
-        '금융팁-오늘은 체크카드를 사용해보세요',
-        '금융팁-오늘은 체크카드를 사용해보세요',
-        '금융팁-오늘은 체크카드를 사용해보세요',
-        '금융팁-오늘은 체크카드를 사용해보세요',
-        '금융팁-오늘은 체크카드를 사용해보세요',
-      ],
+      content: tipList || [],
     },
-    {
-      date: '11월 8일',
-      content: [
-        '금융팁-오늘은 체크카드를 사용해보세요',
-        '금융팁-오늘은 체크카드를 사용해보세요',
-        '금융팁-오늘은 체크카드를 사용해보세요',
-        '금융팁-오늘은 체크카드를 사용해보세요',
-        '금융팁-오늘은 체크카드를 사용해보세요',
-      ],
-    },
-    {
-      date: '11월 8일',
-      content: [
-        '금융팁-오늘은 체크카드를 사용해보세요',
-        '금융팁-오늘은 체크카드를 사용해보세요',
-        '금융팁-오늘은 체크카드를 사용해보세요',
-        '금융팁-오늘은 체크카드를 사용해보세요',
-        '금융팁-오늘은 체크카드를 사용해보세요',
-      ],
-    },
-    {
-      date: '11월 8일',
-      content: [
-        '금융팁-오늘은 체크카드를 사용해보세요',
-        '금융팁-오늘은 체크카드를 사용해보세요',
-        '금융팁-오늘은 체크카드를 사용해보세요',
-        '금융팁-오늘은 체크카드를 사용해보세요',
-        '금융팁-오늘은 체크카드를 사용해보세요',
-      ],
-    },
+
   ]
   return (
     <StyledNoti>

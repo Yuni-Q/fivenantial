@@ -8,11 +8,10 @@ import { setLayout } from '../actions';
 const StyledDetail = styled.div`
   width: 100vw;
   .main {
-    margin: 0 20px;
+    margin: 15px 20px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 30px;
   }
   .main-box {
     padding: 10px;

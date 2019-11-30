@@ -6,6 +6,7 @@ const StyledDeductionDetail = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  align-items: center;
   padding: 10px 20px;
   background: #ffffff;
   .title {
@@ -13,6 +14,7 @@ const StyledDeductionDetail = styled.div`
     font-size: 12px !important;
     font-weight: 500 !important;
     color: #555555 !important;
+    margin: 0 !important;
   }
   .content {
     font-family: AppleSDGothicNeo !important;

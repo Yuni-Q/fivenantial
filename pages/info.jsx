@@ -261,7 +261,7 @@ const Info = () => {
             onClick={() => setTab('소기업…공제부금')}
           >
             소기업…공제부금
-            <div className='bar' style={{height: '106px'}}/>
+            <div className='bar'/>
           </li>
           <li
             className={tab === '주택마련저축' ? 'active-tap' : 'inactive-tap'}
@@ -337,6 +337,7 @@ const StyledChart = styled.div`
   height: 150px;
   display: flex;
   align-items: flex-end;
+  margin-bottom: 30px;
   .month-wrapper {
     border-top: solid 5px #afb8be;
     width: 100%;

@@ -13,7 +13,7 @@ const StyledDate = styled.div`
 const Date = () => {
   return (
     <StyledDate>
-      11월 18일
+      11월 30일
     </StyledDate>
   )
 }

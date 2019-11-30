@@ -10,10 +10,10 @@ const StyledIndex = styled.div`
     font-size: 22px;
     font-weight: 400;
     color: #333333;
-    margin: 30px 20px;
+    margin: 20px 20px 10px;
   }
   .circle {
-    margin: 0 20px 40px;
+    margin: 0 27px 40px;
     width: 320px;
     height: 320px;
     border-radius: 50%;
@@ -165,14 +165,10 @@ const Index = () => {
         </div>
         
       </div>
-      <div className='description-wrapper'>
-          <pre className='description'>
-            {description}
-          </pre>
-        </div>
         <div className='description-wrapper'>
           <pre className='description'>
-            {description}
+          주택청약을 들었다면 청약저축 납입액의 40%, <br />
+          최대 96만원까지 공제받을 수 있습니다.
           </pre>
         </div>
     </StyledIndex>
