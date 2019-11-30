@@ -161,7 +161,21 @@ const StyledForm = styled.form`
       position: fixed;
       bottom: 0;
       left: 0;
-
+    }
+    .partner {
+      height: 100px;
+      border-radius: 2px;
+      background-color: #ebedef;
+      margin: 0 -20px 10px;
+      label {
+        padding: 10px 20px 0;
+      }
+      input {
+        margin: 0 20px;
+      }
+      .salary-wrapper {
+        margin-bottom: 5px;
+      }
     }
 `;
 
@@ -179,6 +193,9 @@ const Form = () => {
   const [charter, setCharter] = useState(false);
   const [self, setSelf] = useState(false);
 
+  const [salary, setSalary] = useState(0);
+  const [partnerSalary, setPartnerSalary] = useState(0);
+
   const [page, setPage] = useState(1);
 
   const dispatch = useDispatch();
@@ -195,7 +212,7 @@ const Form = () => {
         <form action="">
           <label htmlFor="salary">연 소득</label>
           <div className='salary-wrapper'>
-            <input type="text" id='salary' name='salary' />
+            <input type="number" id='salary' name='salary' value={salary} onChange={(e) => setSalary(e.target.value)} />
             <div className='won'>만원</div>
           </div>
 
@@ -238,6 +255,14 @@ const Form = () => {
               </div>
             </div>
 
+            {!!marriage && <div className='partner'>
+              <label htmlFor="salary">배우자 소득</label>
+              <div className='salary-wrapper'>
+                <input type="number" id='salary' name='salary' value={partnerSalary} onChange={(e) => setPartnerSalary(e.target.value)} />
+                <div className='won'>만원</div>
+              </div>
+            </div>}
+
             <div className='radio-box'>
               <label>
                 1인 가구
@@ -266,7 +291,7 @@ const Form = () => {
         </div>
       </StyledForm>
     )
-    if(page === 2)
+  if (page === 2)
     return (
       <Signin setPage={setPage} />
     )

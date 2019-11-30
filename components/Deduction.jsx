@@ -71,26 +71,26 @@ const Deduction = ({ item }) => {
             <div className='button-wrapper'>
               <img src='/static/drowdown.svg' />
 
-          </div>
+            </div>
           </div>
         </div>
       </StyledDeduction>
     )
   if (toggle === true)
     return (
-      <StyledDeduction>
-        
+      <StyledDeduction onClick={() => setToggle(false)} >
+
         <div className='value-wrapper'>
           <div className='title'>
-          {title}
-        </div>
+            {title}
+          </div>
           <div className='won-wrapper'>
             <div className='won'>
               {money}
             </div>
             <div className='button-wrapper'>
-              <img src='/static/dropup.svg' onClick={() => setToggle(false)} />
-          </div>
+              <img src='/static/dropup.svg' />
+            </div>
           </div>
         </div>
         {!!item.content && item.content.map((i, index) => {
@@ -98,7 +98,7 @@ const Deduction = ({ item }) => {
         })}
       </StyledDeduction>
     )
-    return <div></div>;
+  return <div></div>;
 }
 
 
