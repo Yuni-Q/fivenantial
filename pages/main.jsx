@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux'
 import { setLayout } from '../actions';
+import { fetchData } from '../components/Header';
 
 const StyledIndex = styled.div`
   width: 100vw;
@@ -107,6 +108,7 @@ const Index = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setLayout(''))
+    fetchData(dispatch);
   }, [])
   const percent = name ? 76 : 100;
   const per = name ? percent * 3.6 : 100 * 3.6;
