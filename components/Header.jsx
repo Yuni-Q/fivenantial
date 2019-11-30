@@ -79,7 +79,7 @@ const StyledHeader = styled.div`
   }
 `
 
-const fetchData  = async(dispatch) => {
+export const fetchData  = async(dispatch) => {
   const result = await Axios.get('https://55af66b1.ngrok.io/calculate/1')
   dispatch(fetch(result))
   console.log(result)
@@ -106,7 +106,7 @@ const Header = () => {
   return (
     <StyledHeader>
       <div className='title'>{title}</div>
-      {(title === '13월의 월급')
+      {(title === '')
         ? 
         // <Link href='/'>
           <div className='plus' onClick={() => setPopup(true)}/>
@@ -120,7 +120,7 @@ const Header = () => {
           <div 
             className='back-text-wrapper'
             onClick={() => {
-              dispatch(signin('Yuni-Q'));
+              dispatch(signin('안준현'));
               fetchData(dispatch);
             }}
           >

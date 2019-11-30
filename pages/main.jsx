@@ -10,10 +10,10 @@ const StyledIndex = styled.div`
     font-size: 22px;
     font-weight: 400;
     color: #333333;
-    margin: 15px 20px 20px;
+    margin: 30px 20px;
   }
   .circle {
-    margin: 0 20px 30px;
+    margin: 0 20px 40px;
     width: 320px;
     height: 320px;
     border-radius: 50%;
@@ -84,7 +84,7 @@ const StyledIndex = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 20px 42px;
+    margin: 0 20px 20px;
     width: 335px;
     height: 60px;
     border-radius: 2px;
@@ -106,7 +106,7 @@ const Index = () => {
   const {name} = useSelector(state => state.user);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(setLayout('13월의 월급'))
+    dispatch(setLayout(''))
   }, [])
   const percent = name ? 76 : 100;
   const per = name ? percent * 3.6 : 100 * 3.6;
@@ -166,6 +166,11 @@ const Index = () => {
         
       </div>
       <div className='description-wrapper'>
+          <pre className='description'>
+            {description}
+          </pre>
+        </div>
+        <div className='description-wrapper'>
           <pre className='description'>
             {description}
           </pre>

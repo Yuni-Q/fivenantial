@@ -48,6 +48,7 @@ const StyledForm = styled.form`
     width: 250px;
     height: 36px;
     border-radius: 2px;
+    border: none;
     box-shadow: 1px 6px 6px 0 #d6dbde;
     font-family: AppleSDGothicNeo;
     font-size: 20px;
@@ -172,6 +173,7 @@ const StyledForm = styled.form`
       }
       input {
         margin: 0 20px;
+        background: #ffffff;
       }
       .salary-wrapper {
         margin-bottom: 5px;

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { setLayout, signin } from '../actions';
 import { useDispatch } from 'react-redux'
 import Router from 'next/router';
+import {fetchData } from './Header';
 
 const StyledSignin = styled.div`
   margin: 0 20px 60px;
@@ -27,7 +28,7 @@ const StyledSignin = styled.div`
   .title {
     font-family: AppleSDGothicNeo;
     font-size: 22px;
-    font-weight: 300;
+    font-weight: 400;
     color: #555555;
     margin-bottom: 69px;
   }
@@ -134,8 +135,9 @@ const Signin = ({setPage}) => {
   const [error, setError ] = useState(false);
   const dispatch = useDispatch();
   const onClick = () => {
-    dispatch(signin('Yuni-Q'))
-    Router.push('/main')
+    dispatch(signin('안준현'));
+    fetchData(dispatch);
+    Router.push('/main');
   }
   useEffect(() => {
     dispatch(setLayout('기본 정보 입력'))
